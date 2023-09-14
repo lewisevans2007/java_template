@@ -1,20 +1,22 @@
 # Define variables
+
 JAVAC = javac
 JAVA = java
-SRC_DIR = src
+SRC_DIR = com/example
+BIN_DIR = bin
 MAIN_CLASS = Main
+JAR_OPTS = cvfm
 
-.PHONY: all
 all: compile run
 
-.PHONY: compile
 compile:
-	$(JAVAC) -d $(SRC_DIR) $(SRC_DIR)/*.java
+	$(JAVAC) -d $(BIN_DIR) $(SRC_DIR)/*.java
 
-.PHONY: run
 run:
-	$(JAVA) -cp $(SRC_DIR) $(MAIN_CLASS)
+	$(JAVA) -cp $(BIN_DIR) $(MAIN_CLASS)
 
-.PHONY: clean
+jar:
+	jar cvfm $(MAIN_CLASS).jar manifest.txt -C $(BIN_DIR) .
+
 clean:
-	rm -rf $(SRC_DIR)/*.class
+	rm -rf $(BIN_DIR)
