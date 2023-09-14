@@ -13,7 +13,7 @@ compile:
 	$(JAVAC) -d $(BIN_DIR) $(SRC_DIR)/*.java
 
 run:
-	$(JAVA) -cp $(BIN_DIR) $(MAIN_CLASS)
+	$(JAVA) -cp $(BIN_DIR) $(SRC_DIR).$(MAIN_CLASS)
 
 jar:
 	jar cvfm $(MAIN_CLASS).jar manifest.txt -C $(BIN_DIR) .
